@@ -1,0 +1,18 @@
+# NAVIGATE #
+alias cdprojects='cd ~/Projects'
+alias cdtmp='cd ~/tmp'
+
+# GIT #
+alias master='git checkout master'
+alias develop='git checkout develop'
+alias gpull='master && git pull && develop && git pull'
+alias gpublishAll='gpull && master && git push && develop && git push'
+
+# SWAP #
+alias cleanSwap='sudo swapoff -a && sudo swapon -a'
+
+# DOCKER #
+alias endocker='sudo systemctl enable docker.service && sudo systemctl enable docker.socket'
+alias disdocker='sudo systemctl disable docker.service && sudo systemctl disable docker.socket'
+alias startDocker='sudo systemctl start docker.service && sudo systemctl start docker.socket'
+alias stopDocker='sudo systemctl stop docker.service && sudo systemctl stop docker.socket'
