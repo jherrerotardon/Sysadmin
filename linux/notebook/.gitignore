@@ -1,0 +1,5 @@
+# Python trash.
+__pycache__/
+
+# Environments folder.
+python_virtual_environments/

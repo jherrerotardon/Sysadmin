@@ -1,3 +1,5 @@
+alias refreshAlias='source ~/.zshrc'
+
 # NAVIGATE #
 alias cdprojects='cd ~/Projects'
 alias cdtmp='cd ~/tmp'
