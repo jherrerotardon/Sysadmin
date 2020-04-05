@@ -8,6 +8,7 @@ alias cdtmp='cd ~/tmp'
 alias master='git checkout master'
 alias develop='git checkout develop'
 alias gpull='master && git pull && develop && git pull'
+alias gpullLoopBack='f(){ gpull | git checkout $1 }; f $(gbranch)'
 alias gpublishAll='gpull && master && git push && develop && git push'
 
 # SWAP #
@@ -18,3 +19,11 @@ alias endocker='sudo systemctl enable docker.service && sudo systemctl enable do
 alias disdocker='sudo systemctl disable docker.service && sudo systemctl disable docker.socket'
 alias startDocker='sudo systemctl start docker.service && sudo systemctl start docker.socket'
 alias stopDocker='sudo systemctl stop docker.service && sudo systemctl stop docker.socket'
+
+# NETWORK #
+alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -'
+
+# SYSADMIN #
+alias sysupdate="sudo apt update"
+alias sysupgrade="update && sudo apt upgrade -y"
+alias sysfullupgrade="update && sudo apt full-upgrade-y"

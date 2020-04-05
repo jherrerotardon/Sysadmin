@@ -2,4 +2,4 @@
 __pycache__/
 
 # Environments folder.
-python_virtual_environments/
+venv/
