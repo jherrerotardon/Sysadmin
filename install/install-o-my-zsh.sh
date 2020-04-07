@@ -3,7 +3,7 @@
 FILE_PATH=$(dirname "$(realpath "$0")")
 FILES_PATH="$FILE_PATH"/../files
 ZSHRC_TEMPLATE="$FILES_PATH"/.zshrc
-ALIAS_FILE="$HOME"/Projects/sysadmin/utils/alias/.self_profile
+ALIAS_FILE="$HOME"/Projects/sysadmin/alias/.self_profile
 ZSH='/opt/oh-my-zsh'
 
 # Install pre-requisites.
@@ -12,7 +12,7 @@ sudo apt install git curl zsh -y
 ##### Root install ######
 
 # Install OH MY ZSH in /opt/
-sudo sh -c "export CHSH='no' RUNZSH='no' ; $(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sudo sh -c "export ZSH=$ZSH CHSH='no' RUNZSH='no' ; $(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Spaceship prompt
 sudo git clone "https://github.com/denysdovhan/spaceship-prompt.git" "$ZSH/custom/themes/spaceship-prompt" 
