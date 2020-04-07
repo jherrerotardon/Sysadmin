@@ -6,8 +6,6 @@ ZSHRC_TEMPLATE="$FILES_PATH"/.zshrc
 ALIAS_FILE=$(realpath "$FILE_PATH"/../alias/.self_profile)
 ZSH='/opt/oh-my-zsh'
 
-echo $FILES_PATH
-exit 0
 # Install pre-requisites.
 sudo apt install git curl zsh -y
 
