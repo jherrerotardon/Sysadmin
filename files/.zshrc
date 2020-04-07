@@ -75,9 +75,13 @@ plugins=(
   docker
   docker-compose
   docker-machine
+  kubectl
 
+  httpie
   redis-cli
   supervisor
+
+  golang
 
   colored-man-pages
   command-not-found
