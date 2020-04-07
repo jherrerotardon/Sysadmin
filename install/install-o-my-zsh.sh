@@ -1,11 +1,13 @@
 #!/bin/sh
 
 FILE_PATH=$(dirname "$(realpath "$0")")
-FILES_PATH="$FILE_PATH"/../files
+FILES_PATH=$(realpath "$FILE_PATH"/../files)
 ZSHRC_TEMPLATE="$FILES_PATH"/.zshrc
-ALIAS_FILE="$HOME"/Projects/sysadmin/alias/.self_profile
+ALIAS_FILE=$(realpath "$FILE_PATH"/../alias/.self_profile)
 ZSH='/opt/oh-my-zsh'
 
+echo $FILES_PATH
+exit 0
 # Install pre-requisites.
 sudo apt install git curl zsh -y
 
