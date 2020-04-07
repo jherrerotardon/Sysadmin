@@ -39,4 +39,4 @@ chown $USER:$USER $HOME/.zshrc
 # Load alias.
 echo "source $ALIAS_FILE" >> $HOME/.zshrc
 
-echo -e "\n\nClose session and return. See you soon..."
+echo "\n\nClose session and return. See you soon..."
