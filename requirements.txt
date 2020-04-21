@@ -1,0 +1,8 @@
+# Jherrero python framework.
+git+ssh://git@github.com/jherrerotardon/py-framework.git@feature/Providers
+
+# Do http requests.
+requests
+
+# Format text.
+json2html
