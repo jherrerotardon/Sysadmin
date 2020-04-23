@@ -39,6 +39,10 @@ class Host(MySQLModel):
         return True
 
     def create_table(self):
+        """Creates table of model in DB if not exists.
+
+        :return:
+        """
         command = 'CREATE TABLE ' + self._table + ' (' + \
                   '  mac_address VARCHAR(18) NOT NULL,' + \
                   '  hostname VARCHAR(16) NOT NULL,' + \

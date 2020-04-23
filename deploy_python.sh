@@ -13,7 +13,7 @@ git -C "${PROJECT_PATH}" pull
 # Create environment if not exists.
 if [[ ! -d ${ENVIRONMENT_PATH} ]]; then
     echo -e "Creating environment $ENVIRONMENT_PATH...\n\n"
-    python3.8 -m virtualenv "${ENVIRONMENT_PATH}"
+    python3 -m virtualenv "${ENVIRONMENT_PATH}"
 fi
 
 # Install requirements.
