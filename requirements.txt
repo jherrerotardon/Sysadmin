@@ -1,5 +1,5 @@
 # Jherrero python framework.
-git+ssh://git@github.com/jherrerotardon/py-framework.git@feature/Providers
+git+ssh://git@github.com/jherrerotardon/py-framework.git
 
 # Do http requests.
 requests

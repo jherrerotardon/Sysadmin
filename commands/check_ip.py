@@ -16,6 +16,7 @@ class CheckIP(Command):
 
     _description = 'Check network data from host, and management it.'
 
+    """Data values to check and save. """
     _hostname = ''
     _private_ip = ''
     _public_ip = ''
@@ -32,11 +33,15 @@ class CheckIP(Command):
     def handle(self) -> int:
         self.info_time("Checking IP...")
 
-        self._update_info()
+        self._check()
 
         return Command.RETURN_SUCCESS
 
-    def _update_info(self):
+    def _check(self):
+        """Checks if data has changed since the last time. In this case, updates data in DB and sends an email.
+
+        :return
+        """
         data = {
             Host.MAC_ADDRESS: self._mac_address,
             Host.HOSTNAME: self._hostname,
@@ -44,10 +49,12 @@ class CheckIP(Command):
             Host.PUBLIC_IP: self._public_ip,
         }
 
-        # Check data of host and if if changed then send email notifying it.
+        # Check data of host and if something is changed then send email notifying it.
         data_changed = (Host()).update_info(**data)
-        if data_changed:
-            self._send_notification_mail('jorgeht@usal.es', data)
+
+        notification_to = env('NOTIFICATION_TO')
+        if data_changed and notification_to:
+            self._send_notification_mail(notification_to, data)
 
     @staticmethod
     def _send_notification_mail(to: str, data: dict):
