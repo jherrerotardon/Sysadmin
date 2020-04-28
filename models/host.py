@@ -1,6 +1,5 @@
-from py_framework.models.mysql_model import MySQLModel
-from py_framework.helpers.dates import auto_date
 from py_framework.helpers.lists import array_merge
+from py_framework.models.mysql_model import MySQLModel
 
 
 class Host(MySQLModel):
@@ -44,13 +43,12 @@ class Host(MySQLModel):
         :return:
         """
         command = 'CREATE TABLE ' + self._table + ' (' + \
-                  '  mac_address VARCHAR(18) NOT NULL,' + \
-                  '  hostname VARCHAR(16) NOT NULL,' + \
-                  '  private_ip VARCHAR(16) NOT NULL,' + \
-                  '  public_ip VARCHAR(16) NOT NULL,' + \
-                  '  created_at DATETIME NOT NULL,' + \
-                  '  updated_at DATETIME NOT NULL,' + \
-                  '  PRIMARY KEY (mac_address)' + \
+                  '  {} VARCHAR(18) PRIMARY KEY,'.format(self.MAC_ADDRESS) + \
+                  '  {} VARCHAR(16) NOT NULL,'.format(self.HOSTNAME) + \
+                  '  {} VARCHAR(16) NOT NULL,'.format(self.PRIVATE_IP) + \
+                  '  {} VARCHAR(16) NOT NULL,'.format(self.PUBLIC_IP) + \
+                  '  {} TIMESTAMP DEFAULT CURRENT_TIMESTAMP,'.format(self.CREATED_AT) + \
+                  '  {} TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'.format(self.UPDATED_AT) + \
                   ') ENGINE=InnoDB'
 
         if not self._exists_table():
@@ -82,19 +80,17 @@ class Host(MySQLModel):
             self.HOSTNAME: '',
             self.PRIVATE_IP: '',
             self.PUBLIC_IP: '',
-            self.CREATED_AT: auto_date(),
-            self.UPDATED_AT: auto_date(),
         }
         kwargs = array_merge(default, kwargs)
 
         info = self.get_info(kwargs['mac_address'])
         has_changed = not info or self._has_changed(info, kwargs, [self.HOSTNAME, self.PRIVATE_IP, self.PRIVATE_IP])
         if has_changed:
-            columns_to_update = [self.HOSTNAME, self.PRIVATE_IP, self.PUBLIC_IP, self.UPDATED_AT]
+            columns_to_update = default.keys()
             command = 'INSERT INTO {} ( {} ) VALUES ( {} ) ON DUPLICATE KEY UPDATE {}'.format(
                 self._table,
-                ', '.join(self._columns),
-                ', '.join(['%({})s'.format(column) for column in self._columns]),
+                ', '.join(columns_to_update),
+                ', '.join(['%({})s'.format(column) for column in columns_to_update]),
                 ', '.join(['{0}=%({0})s'.format(column) for column in columns_to_update])
             )
 
