@@ -18,6 +18,6 @@ fi
 
 # Install requirements.
 echo -e "Installing requirements...\n"
-"${ENVIRONMENT_PATH}"/bin/pip3 install --upgrade -r "${PROJECT_PATH}"/requirements.txt | grep -v 'already satisfied'
+"${ENVIRONMENT_PATH}"/bin/python -m pip install --upgrade -r "${PROJECT_PATH}"/requirements.txt | grep -v 'already satisfied'
 
 echo -e "Done."
