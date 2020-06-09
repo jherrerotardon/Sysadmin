@@ -1,5 +1,5 @@
-from py_framework.helpers.lists import array_merge
-from py_framework.models.mysql_model import MySQLModel
+from pyframework.helpers.lists import array_merge
+from pyframework.models.mysql_model import MySQLModel
 
 
 class Host(MySQLModel):
@@ -47,7 +47,7 @@ class Host(MySQLModel):
                   '  {} VARCHAR(16) NOT NULL,'.format(self.HOSTNAME) + \
                   '  {} VARCHAR(16) NOT NULL,'.format(self.PRIVATE_IP) + \
                   '  {} VARCHAR(16) NOT NULL,'.format(self.PUBLIC_IP) + \
-                  '  {} TIMESTAMP DEFAULT CURRENT_TIMESTAMP,'.format(self.CREATED_AT) + \
+                  '  {} TIMESTAMP DEFAULT CURRENT_TIMESTAMP DEFAULT GETDATE(),'.format(self.CREATED_AT) + \
                   '  {} TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'.format(self.UPDATED_AT) + \
                   ') ENGINE=InnoDB'
 

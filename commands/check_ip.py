@@ -4,9 +4,9 @@ import uuid
 
 import requests
 from json2html import *
-from py_framework.helpers.configuration import env
-from py_framework.providers.cli.command import Command
-from py_framework.providers.google.gmail import Mail
+from pyframework.helpers.configuration import env
+from pyframework.providers.cli.command import Command
+from pyframework.providers.google.gmail import Mail
 
 from models.host import Host
 
