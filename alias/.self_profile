@@ -21,7 +21,7 @@ alias startDocker='sudo systemctl start docker.service && sudo systemctl start d
 alias stopDocker='sudo systemctl stop docker.service && sudo systemctl stop docker.socket'
 
 # NETWORK #
-alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -'
+alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
 
 # SYSADMIN #
 alias sysupdate="sudo apt update"
